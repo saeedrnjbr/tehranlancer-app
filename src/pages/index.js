@@ -70,11 +70,11 @@ export default function Home() {
         <div className='pr-5'>
           <Swiper
             slidesPerView={1.5}
-            spaceBetween={15}
+            spaceBetween={20}
           >
             {courses.data.length > 0 && courses.data.map((course, cr) => {
               return <SwiperSlide key={cr}>
-                <Link href={`/courses/${course.id}/lessons`} className='bg-white h-32 mb-1 rounded-xl  drop-shadow-sm  shadow-[0_5px_5px_rgba(0,0,0,0.15)] m-1  py-5 px-5 flex items-center gap-5'>
+                <Link href={`/courses/${course.id}/lessons`} className='bg-white h-32 m-1 rounded-xl  drop-shadow-sm  shadow-[0_5px_5px_rgba(0,0,0,0.15)]   py-5 px-5 flex items-center gap-5'>
                   <img className=' w-16' src={course.image_link} />
                   <div className='flex flex-col space-y-2'>
                     <span className='font-bold'>{course.name}</span>
@@ -99,11 +99,11 @@ export default function Home() {
         <div className='pr-5'>
           <Swiper
             slidesPerView={1.5}
-            spaceBetween={15}
+            spaceBetween={20}
           >
             {freelancers.data.map((freelancer, fr) => {
               return <SwiperSlide key={fr}>
-                <div class={`bg-white mb-1  rounded-lg  drop-shadow-sm  shadow-[0_5px_5px_rgba(0,0,0,0.15)]  px-2 py-3 ${fr == freelancers.data.length - 1 ? "ml-5" : ""}`}>
+                <div class={`bg-white m-1  rounded-lg  drop-shadow-sm  shadow-[0_5px_5px_rgba(0,0,0,0.15)]  px-2 py-3 ${fr == freelancers.data.length - 1 ? "ml-5" : ""}`}>
                   <Link href={`/freelancers/${freelancer.id}`} className='flex items-center space-x-2'>
                     <img class="w-16 h-16 rounded-full " src={freelancer.avatar_link} alt="" />
                     <div className='flex flex-col space-y-2'>
@@ -131,11 +131,11 @@ export default function Home() {
         <div className='pr-5'>
           <Swiper
             slidesPerView={2.5}
-            spaceBetween={15}
+            spaceBetween={20}
           >
             {products.data.map((product, pr) => {
               return <SwiperSlide key={pr}>
-                <Link href={`/products/${product.id}`} class={`relative h-72 flex mb-1 w-full flex-col overflow-hidden rounded-lg  bg-white drop-shadow-sm  shadow-[0_5px_5px_rgba(0,0,0,0.15)] ${pr == products.data.length - 1 ? "ml-5" : ""}`}>
+                <Link href={`/products/${product.id}`} class={`relative h-72 flex m-1 w-full flex-col overflow-hidden rounded-lg  bg-white drop-shadow-sm  shadow-[0_5px_5px_rgba(0,0,0,0.15)] ${pr == products.data.length - 1 ? "ml-5" : ""}`}>
                   <div class="relative mx-3 mt-3 flex h-44 overflow-hidden rounded-xl" href="#">
                     <img className='object-cover w-full' src={product.image_link} />
                   </div>
