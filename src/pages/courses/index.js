@@ -68,7 +68,7 @@ export default function Home() {
               }}
             >
               {isBranch && <ArrowIcon isOpen={isExpanded} />}
-              <span onClick={() => handleElementClick(element)} className="name text-white cursor-pointer hover:text-[#19C472]">
+              <span onClick={() => handleElementClick(element)} className="name text-white cursor-pointer font-bold">
                 {element.name}
               </span>
             </div>

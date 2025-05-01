@@ -24,8 +24,9 @@ export default function Home() {
 
         <div className='flex flex-col p-5 '>
 
+        
             {lessons.lessonData.length > 0 && <div className=" py-2 bg-black">
-                <ReactPlayer playing={true} width="100%" controls url={lessons.lessonData[0].link} />
+                <ReactPlayer playing={true} width="100%" light={<img  src={lessons.lessonData[0].thumbnail_link} /> } controls url={lessons.lessonData[0].link} />
             </div>}
 
             <Button title="بریم بازی آزمون" />

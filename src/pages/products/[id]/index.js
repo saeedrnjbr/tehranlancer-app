@@ -21,9 +21,9 @@ export default function Home() {
 
   return <MainLayout backPath="/" title={products.productData.length ? products.productData[0].name : ""}>
 
-  <div className='flex flex-col space-y-5  p-5'>
+  <div className='flex flex-col space-y-5  p-5 pb-16'>
 
-      {products.productData.length > 0 && <div className='flex flex-col space-y-3'>
+      {products.productData.length > 0 && <div className='flex  flex-col space-y-3'>
 
         <img className='object-cover w-full' src={products.productData[0].image_link} />
 
@@ -31,7 +31,7 @@ export default function Home() {
 
         <div className='text-justify leading-9 text-sm' dangerouslySetInnerHTML={{ __html: products.productData[0].description }} />
 
-        <span class="w-full font-bold text-xl mt-5 text-primary-green">{products.productData[0].price_formatter} تومان</span>
+        <span class="w-full font-bold text-2xl mt-5 text-primary-green">{products.productData[0].price_formatter} تومان</span>
      
         </div>}
 

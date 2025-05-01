@@ -2,11 +2,11 @@
 
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-export const BASE_URL = "http://localhost:8000/api"
-// export const BASE_URL = "https://panel.dibanik.ir/api"
+// export const BASE_URL = "http://localhost:8000/api"
+export const BASE_URL = "https://panel.dibanik.ir/api"
 
 export const fetchMovies = createAsyncThunk("fetchMovies", async () => {
-  const res = await fetch(`${BASE_URL}/movies`);
+  const res = await fetch(`${BASE_URL}/movies?per_page=10`);
   return res?.json();
 });
 

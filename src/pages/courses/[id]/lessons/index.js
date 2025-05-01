@@ -25,15 +25,15 @@ export default function Home() {
 
   <div className='flex flex-col space-y-5  p-5'>
 
-      {courses.courseData.length > 0 && <div className='flex items-center justify-center'>
-        <img className=' w-24' src={courses.courseData[0].image_link} />
+      {courses.courseData.length > 0 && <div className='flex  items-center justify-center'>
+        <img className='object-cover w-52' src={courses.courseData[0].image_link} />
       </div>}
 
       {courses.courseData.length > 0 && <div className=' text-sm py-5 text-neutral-500 text-justify' dangerouslySetInnerHTML={{ __html: courses.courseData[0].content }} />}
 
       {courses.courseData.length > 0 && <div className='text-justify leading-9 text-sm' dangerouslySetInnerHTML={{ __html: courses.courseData[0].description }} />}
 
-      <div className=' border border-neutral-200 text-xs rounded-xl p-3 mt-5'>
+      {lessons.data.length >0 && <div className=' border border-neutral-200 text-xs rounded-xl p-3 mt-5'>
         <ul className='flex flex-col space-y-3'>
 
           {lessons.data.map((lesson, ls) => {
@@ -50,7 +50,7 @@ export default function Home() {
 
         </ul>
 
-      </div>
+      </div>}
 
     </div>
 

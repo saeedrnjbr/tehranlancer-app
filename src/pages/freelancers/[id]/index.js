@@ -24,7 +24,7 @@ export default function Home() {
 
     <div>
 
-      <div className='flex relative h-[240px] flex-col space-y-3'>
+      <div className='flex relative h-[250px] flex-col space-y-3'>
 
         <img className=' object-cover w-full h-full' src="/images/dashboard-user.png" />
 
@@ -33,6 +33,7 @@ export default function Home() {
           <div className='flex flex-col space-y-3 mt-5 items-center justify-center'>
             <img className=' rounded-full w-32 h-32' src={freelancers.freelancerData[0].avatar_link} alt="" />
             <span className=' text-primary-green text-white text-sm font-bold py-2 px-6 bg-green-50 rounded-2xl'>{freelancers.freelancerData[0].nick_name}</span>
+            <span className='text-white '>{freelancers.freelancerData[0].age} سال</span>
           </div>
 
         </div>}
@@ -45,21 +46,16 @@ export default function Home() {
         <div className='flex flex-col px-5 mt-5'>
           <div className='flex flex-col space-y-5'>
             <div className='flex flex-col space-y-3'>
-              <span className=' bg-green-50 text-primary-green block  py-2 px-2'>سن</span>
-              
-              <span className=' text-sm text-neutral-500'>{freelancers.freelancerData[0].age} سال</span>
-            </div>
-            <div className='flex flex-col space-y-3'>
               <span className=' bg-green-50 text-primary-green block py-2 px-2'>تخصص</span>
-              <span className=' text-sm text-neutral-500' dangerouslySetInnerHTML={{ __html: freelancers.freelancerData[0].skills }}></span>
+              <span className=' text-sm text-justify leading-8 text-neutral-500' dangerouslySetInnerHTML={{ __html: freelancers.freelancerData[0].skills }}></span>
             </div>
             <div className='flex flex-col space-y-3'>
               <span className=' bg-green-50 text-primary-green block py-2 px-2'>سوابق کاری</span>
-              <span className=' text-sm text-neutral-500' dangerouslySetInnerHTML={{ __html: freelancers.freelancerData[0].about }}></span>
+              <span className=' text-sm text-justify leading-8 text-neutral-500' dangerouslySetInnerHTML={{ __html: freelancers.freelancerData[0].about }}></span>
             </div>
             <div className='flex flex-col space-y-3'>
               <span className=' bg-green-50 text-primary-green block py-2 px-2'>علاقمندی ها</span>
-              <span className=' text-sm text-neutral-500' dangerouslySetInnerHTML={{ __html: freelancers.freelancerData[0].favorites }}></span>
+              <span className=' text-sm text-justify leading-8  text-neutral-500' dangerouslySetInnerHTML={{ __html: freelancers.freelancerData[0].favorites }}></span>
             </div>
           </div>
 

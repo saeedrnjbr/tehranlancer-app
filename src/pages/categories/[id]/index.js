@@ -34,7 +34,7 @@ export default function Home() {
             </div>
             <div class="mt-4 px-5 pb-2 flex flex-col space-y-3">
               <h5 class="text-sm line-clamp-2  tracking-tight text-secondary">{product.name}</h5>
-              <span class="text-sm w-full font-bold text-primary-green">{product.price_formatter} تومان</span>
+              <span class="text-lg w-full font-bold text-primary-green mb-5">{product.price_formatter} تومان</span>
             </div>
           </Link>
         })}

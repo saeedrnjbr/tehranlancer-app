@@ -23,8 +23,8 @@ export default function Home() {
 
     {movies.movieData.length > 0 && <div>
 
-      <div className=" py-2 my-5 bg-black">
-        <ReactPlayer playing={true} width="100%" light={<img src={movies.movieData[0].image_link} />} controls url={movies.movieData[0].link} />
+      <div className=" py-2 mb-5 bg-black">
+        <ReactPlayer playing={true} width="100%" light={<img  src={movies.movieData[0].thumbnail_link} />} controls url={movies.movieData[0].link} />
       </div>
 
       <div className='px-5 flex flex-col space-y-3'>
