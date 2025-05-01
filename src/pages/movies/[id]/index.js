@@ -27,7 +27,7 @@ export default function Home() {
         <ReactPlayer playing={true} width="100%" light={<img  src={movies.movieData[0].thumbnail_link} />} controls url={movies.movieData[0].link} />
       </div>
 
-      <div className='px-5 flex flex-col space-y-3'>
+      <div className='px-5 flex flex-col space-y-3 pb-16'>
         <div className='flex items-center justify-between pb-5'>
           <h3 className='font-bold text-xl'>{movies.movieData[0].name}</h3>
           <span className='text-xs  bg-[#FFD53F] p-1.5 px-4 rounded-r-xl text-black'>رده سنی تا {movies.movieData[0].age_group} سال - {movies.movieData[0].genre.name}</span>

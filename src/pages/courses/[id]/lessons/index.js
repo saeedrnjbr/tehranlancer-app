@@ -23,7 +23,7 @@ export default function Home() {
 
   return <MainLayout backPath={`/courses/${courses.courseData.length ? courses.courseData[0].course_category_id : ""}`} title={courses.courseData.length ? courses.courseData[0].name : ""}>
 
-  <div className='flex flex-col space-y-5  p-5'>
+  <div className='flex flex-col space-y-5 pb-16 p-5'>
 
       {courses.courseData.length > 0 && <div className='flex  items-center justify-center'>
         <img className='object-cover w-52' src={courses.courseData[0].image_link} />
