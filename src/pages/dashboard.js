@@ -62,11 +62,8 @@ export default function Home() {
     
     return <MainLayout navigationVisible={false} title='داشبورد'>
 
-      <div className='flex relative h-[400px] flex-col space-y-2'>
+      <div className='flex relative h-[250px] flex-col space-y-2'>
         <img className=' object-cover w-full h-full' src="/images/level.png" />
-        <div className=' absolute top-0 py-3 left-0 right-0'>
-          <UserInfo users={users} />
-        </div>
       </div>
 
       <div className='flex flex-col space-y-2 '>
@@ -163,7 +160,7 @@ export default function Home() {
             </select>
           </div>
 
-          <Button title="ثبت و تایید" />
+          <Button  loading={freelancers.storeFreelancerLevelIsLoading}  title="ثبت و تایید" />
 
         </form>
 
