@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+/* 
+https://www.svgrepo.com/svg/523993/bell?edit=true
+A5ADAB
+*/
+
+body{
+  @apply bg-neutral-100
+}
+
+@font-face {
+  font-family: KalamehWeb;
+  font-style: normal;
+  font-weight: normal;
+  src: url('/fonts/kalameh/woff2/KalamehWebFaNum-Regular.woff2') format('woff2'),
+  url('/fonts/kalameh/woff/KalamehWebFaNum-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: KalamehWeb;
+  font-style: normal;
+  font-weight: bold;
+  src: url('/fonts/kalameh/woff2/KalamehWebFaNum-Medium.woff2') format('woff2'), 
+  url('/fonts/kalameh/woff/KalamehWebFaNum-Medium.woff') format('woff');
+}
+
+
+
+body{
+  font-family: KalamehWeb;
+}
+
+body{
+  @apply bg-neutral-50
+}
+
+.text-primary{
+  @apply text-slate-900
+}
+
+.text-secondary{
+  @apply text-neutral-500
+}
+
+.pin-code input{
+  @apply border  my-2 px-2 py-3 rounded text-center
+}
+
+.text-primary-green{
+  color: #19C472;
+}
+
+.border-green{
+  @apply border-[#19C472]
+}
+
+.bg-primary-green{
+  background-color: #19C472;
+}
+
+.swiper-pagination-bullet-active{
+  background-color: #19C472 !important;
+}
+
+.tree{
+  @apply flex flex-col space-y-4
+}
+.tree-node{
+  @apply flex items-center 
+}
+
+.tree-node-group--expanded{
+  @apply px-10 flex flex-col space-y-4 my-5
+}
+
+.tree-leaf-list-item{
+  @apply text-gray-500
+}
