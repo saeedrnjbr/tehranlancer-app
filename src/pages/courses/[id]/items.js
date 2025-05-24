@@ -1,27 +1,24 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchCourseCategoryTrees } from '../api';
+import { fetchCourseCategoryTrees } from '../../api';
 import { useSelector } from 'react-redux';
 import MainLayout from '@/components/main-layout';
-import TreeView, { flattenTree } from "react-accessible-treeview";
-import cx from "classnames";
-import { IoMdArrowDropright } from "react-icons/io";
-import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 
 export default function Home() {
 
   const dispatch = useDispatch()
 
+  const params = useParams()
   const courseCategories = useSelector((state) => state.courseCategories);
 
   useEffect(() => {
-    dispatch(fetchCourseCategoryTrees())
-  }, [])
+    dispatch(fetchCourseCategoryTrees(params))
+  }, [params])
 
-  console.log(courseCategories)
 
-  return <MainLayout background='bg-[#1AA662]' title="گروه‌بندی دوره‌ها">
+  return <MainLayout  backPath="/courses" background='bg-[#1AA662]' title="گروه‌بندی دوره‌ها">
 
     <div className='flex flex-col space-y-5  p-5'>
 
@@ -30,14 +27,12 @@ export default function Home() {
       {courseCategories.courseCategoryTreesData.length > 0 && <div className=' grid grid-cols-2 gap-3'>
 
         {courseCategories.courseCategoryTreesData.map((category, ec) => {
-          return <Link href={`/courses/${category.id}/items`} key={ec} className=' bg-white rounded-xl drop-shadow-sm  shadow-[0_5px_5px_rgba(0,0,0,0.15)] py-10 px-5 flex items-center justify-center '>
+          return <Link href={`/courses/${category.id}`} key={ec} className=' bg-white rounded-xl drop-shadow-sm  shadow-[0_5px_5px_rgba(0,0,0,0.15)] py-10 px-5 flex items-center justify-center '>
             <span className=' text-neutral-600 text-base'>{category.name}</span>
           </Link>
         })}
       </div>}
 
-
-    
     </div>
 
 

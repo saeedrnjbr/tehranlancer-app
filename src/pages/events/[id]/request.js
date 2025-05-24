@@ -47,7 +47,7 @@ export default function Home() {
   if (events.eventRequestData.length > 0 && submitted) {
     setSubmitted(false)
     toast.success("درخواست با موفقیت ثبت شد")
-    setTimeout( () => location.reload(), 1000 )
+    setTimeout(() => location.reload(), 1000)
     router.push(`/events/${events.eventData.length ? events.eventData[0].event_category_id : 0}/request`)
   }
 
@@ -56,11 +56,13 @@ export default function Home() {
 
     <div className='flex flex-col space-y-2 mt-10'>
 
+
       <p className='text-center font-semibold'>جهت ثبت درخواست فرم زیر را تکمیل نمایید</p>
 
       <img className='w-16 mx-auto my-4' src="/images/info.png" />
 
       {events.eventData.length > 0 && <p className='text-center w-2/3 mx-auto mt-3 text-base text-indigo-600'>{events.eventData[0].name}</p>}
+      {events.eventData.length > 0 && <span className='text-base text-neutral-500 px-4 py-5 block' dangerouslySetInnerHTML={{ __html: events.eventData[0].description }}></span> }
 
       <form onSubmit={formik.handleSubmit} method='post' encType='multipart/form-data' class="flex text-sm flex-col space-y-5 px-8 mt-5">
 
@@ -92,7 +94,7 @@ export default function Home() {
             پایه تحصیلی
           </label>
           <select name='level' onChange={formik.handleChange} class="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-            <option value="1">انتخاب کنید</option>
+            <option value="">انتخاب کنید</option>
             <option value="1">پایه اول</option>
             <option value="2">پایه دوم</option>
             <option value="3">پایه سوم</option>

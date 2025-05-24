@@ -89,8 +89,8 @@ export const fetchLesson = createAsyncThunk("fetchLesson", async (data) => {
   return res?.json();
 });
 
-export const fetchCourseCategoryTrees = createAsyncThunk("fetchCourseCategoryTrees", async () => {
-  const res = await fetch(`${BASE_URL}/course-categories/tree`);
+export const fetchCourseCategoryTrees = createAsyncThunk("fetchCourseCategoryTrees", async (data) => {
+  const res = await fetch(`${BASE_URL}/course-categories/tree/${data ? data.id : 0}`);
   return res?.json();
 });
 
