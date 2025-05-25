@@ -22,17 +22,15 @@ export default function Home() {
 
   return <MainLayout backPath="/freelancers" title={freelancers.freelancerData.length > 0 ? freelancers.freelancerData[0].nick_name : ""}>
 
-    <div>
+    <div className='grid grid-cols-12'>
 
-      <div className='flex relative h-[250px] flex-col space-y-3'>
-
-        <img className=' object-cover w-full h-full' src="/images/dashboard-user.png" />
+      <div className='flex col-span-3 relative h-[250px] flex-col space-y-3'>
 
         {freelancers.freelancerData.length > 0 && <div className=' absolute top-0 left-0 right-0'>
 
           <div className='flex flex-col space-y-3 mt-5 items-center justify-center'>
-            <img className=' rounded-full w-32 h-32' src={freelancers.freelancerData[0].avatar_link} alt="" />
-            <span className=' text-primary-green text-white text-sm font-bold py-2 px-6 bg-green-50 rounded-2xl'>{freelancers.freelancerData[0].nick_name}</span>
+            <img className=' rounded-full w-24 h-24' src={freelancers.freelancerData[0].avatar_link} alt="" />
+            <span className=' text-primary-green text-white text-sm font-bold py-2 px-6  rounded-2xl'>{freelancers.freelancerData[0].nick_name}</span>
             <span className='text-white '>{freelancers.freelancerData[0].age} سال</span>
           </div>
 
@@ -41,7 +39,7 @@ export default function Home() {
       </div>
 
 
-      {freelancers.freelancerData.length > 0 && <div className='flex flex-col space-y-2 gap-5 pb-24'>
+      {freelancers.freelancerData.length > 0 && <div className='flex col-span-9 flex-col space-y-2 gap-5 pb-24'>
 
         <div className='flex flex-col px-5 mt-5'>
           <div className='flex flex-col space-y-5'>
