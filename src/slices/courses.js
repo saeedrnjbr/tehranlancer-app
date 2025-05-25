@@ -1,4 +1,4 @@
-import { fetchCourse, fetchCourses } from "@/pages/api";
+import { fetchCourse, fetchCourses, fetchCoursesByLevel } from "@/pages/api";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -6,6 +6,10 @@ const initialState = {
     data: [],
     message: "",
     error: false,
+
+    courseLevelsIsLoading: false,
+    courseLevelsData: [],
+    courseLevelsError: false,
 
     courseIsLoading: false,
     courseData: [],
@@ -32,6 +36,22 @@ const courseSlice = createSlice({
             state.error = false;
         })
 
+        builder.addCase(fetchCoursesByLevel.pending, (state, action) => {
+            state.courseLevelsIsLoading = true;
+            state.courseLevelsError = false;
+            state.courseLevelsData = [];
+        })
+        builder.addCase(fetchCoursesByLevel.fulfilled, (state, action) => {
+            state.courseLevelsIsLoading = false;
+            state.courseLevelsData = action.payload.data;
+            state.courseLevelsError = action.payload.error;
+            state.message = action.payload.message;
+        })
+        builder.addCase(fetchCoursesByLevel.rejected, (state, action) => {
+            state.courseLevelsIsLoading = false;
+            state.courseLevelsError = false;
+        })
+
         builder.addCase(fetchCourse.pending, (state, action) => {
             state.courseIsLoading = true;
             state.courseError = false;
@@ -51,6 +71,6 @@ const courseSlice = createSlice({
     }
 });
 
-export const { LIST_COURSES, GET_COURSE  } = courseSlice.actions;
+export const { LIST_COURSES, GET_COURSE } = courseSlice.actions;
 
 export default courseSlice.reducer;

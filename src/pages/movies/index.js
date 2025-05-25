@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import MainLayout from '@/components/main-layout';
 import Link from 'next/link';
 
-export default () =>  {
+export default () => {
 
   const dispatch = useDispatch()
 
@@ -17,14 +17,13 @@ export default () =>  {
 
   return <MainLayout title="سرگرمی">
 
-    <div className='grid grid-cols-2 gap-5 p-5 '>
+    <div className='grid grid-cols-3 gap-5 p-5 '>
+
 
       {movies.data.map((item, im) => {
         return <Link href={`/movies/${item.id}`} className={`flex relative flex-col space-y-3`} >
-          <div class={`relative flex  overflow-hidden rounded-xl`}>
-            <img className="object-cover w-full rounded-2xl" src={item.image_link} />
-          </div>
-          <span className='line-clamp-2 text-sm text-black font-semibold'>{item.name}, {item.genre.name}</span>
+          <img className="object-cover rounded-2xl" src={item.image_link} />
+          <span className='line-clamp-2 text-sm  text-neutral-700  font-semibold'>{item.name}, {item.genre.name}</span>
           <span className='text-xs absolute bg-[#FFD53F] left-0  -top-2 p-1.5 px-4 rounded-r-xl text-black'>رده سنی تا {item.age_group} سال</span>
         </Link>
       })}

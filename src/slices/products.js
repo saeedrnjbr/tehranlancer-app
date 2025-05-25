@@ -9,7 +9,7 @@ const initialState = {
 
     productIsLoading: false,
     productData: [],
-    productError: false,
+    productError: false
 
 };
 

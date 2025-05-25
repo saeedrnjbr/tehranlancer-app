@@ -63,10 +63,16 @@ export const fetchFreelancer = createAsyncThunk("fetchFreelancer", async (data) 
 });
 
 
-export const fetchCourses = createAsyncThunk("fetchCourses", async () => {
-  const res = await fetch(`${BASE_URL}/courses`);
+export const fetchCourses = createAsyncThunk("fetchCourses", async (data) => {
+  const res = await fetch(`${BASE_URL}/courses/${data ? data.id : 0}`);
   return res?.json();
 });
+
+export const fetchCoursesByLevel = createAsyncThunk("fetchCoursesByLevel", async (data) => {
+  const res = await fetch(`${BASE_URL}/courses/level/${data.id}`);
+  return res?.json();
+});
+
 
 export const fetchCourseByCategories = createAsyncThunk("fetchCourseByCategories", async (data) => {
   const res = await fetch(`${BASE_URL}/course-categories/${data.id}/courses`);

@@ -23,7 +23,7 @@ export default function Home() {
       {categories.data.length > 0 && <div className=' grid grid-cols-2 gap-3'>
 
         {categories.data.map((category, ec) => {
-          return <Link href={`/categories/${category.id}`} key={ec} className=' bg-white rounded-xl drop-shadow-sm  shadow-[0_5px_5px_rgba(0,0,0,0.15)] py-10 px-5 flex items-center justify-center '>
+          return <Link href={`/categories/${category.id}`} key={ec} className=' bg-white rounded-xl drop-shadow-sm  shadow-[0_5px_5px_rgba(0,0,0,0.15)] p-5 flex items-center justify-center '>
             <span className=' text-neutral-600 text-base'>{category.name}</span>
           </Link> 
         })}

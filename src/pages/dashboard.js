@@ -2,27 +2,28 @@
 import { useDispatch, useSelector } from 'react-redux';
 import MainLayout from '@/components/main-layout';
 import { useEffect, useState } from 'react';
-import { fetchCourseCategories, fetchCourses, fetchFreelancerLevels, fetchStoreFreelancerLevel } from './api';
+import { fetchCourses, fetchCoursesByLevel, fetchFreelancerLevels, fetchStoreFreelancerLevel } from './api';
 import { useFormik } from 'formik';
 import Button from '@/components/button';
 import { toast } from 'react-toastify';
 import Spinner from '@/components/spinner';
 import UserInfo from '@/components/user-info';
+import Select from 'react-select'
+
+
 
 export default function Home() {
 
   const dispatch = useDispatch()
 
   const courses = useSelector((state) => state.courses);
-
   const users = useSelector((state) => state.users);
-
   const freelancers = useSelector((state) => state.freelancers);
-
   const [submitted, setSubmitted] = useState(false)
+  const [levelId, setLevelId] = useState(0)
+  const [courseOptions, setCourseOptions] = useState([])
 
   useEffect(() => {
-    dispatch(fetchCourses())
     dispatch(fetchFreelancerLevels())
   }, [])
 
@@ -38,7 +39,6 @@ export default function Home() {
       courses: []
     },
     onSubmit: values => {
-      console.log(values)
       dispatch(fetchStoreFreelancerLevel(values))
       setSubmitted(true)
     },
@@ -54,12 +54,35 @@ export default function Home() {
     location.reload()
   }
 
+  useEffect(() => {
+
+    var inItems = []
+
+    if (courses.courseLevelsData.length) {
+      courses.courseLevelsData.map(course => inItems.push({ value: course.id, label: course.name }))
+    }
+
+    setCourseOptions(inItems)
+
+  }, [courses])
+
+  useEffect(() => {
+    if (levelId > 0) {
+      dispatch(fetchCoursesByLevel({
+        id: levelId
+      }))
+    }
+  }, [levelId])
+
   if (freelancers.freelancerLevelData == undefined) {
     return <Spinner />
   }
 
+
+
+
   if (freelancers.freelancerLevelData.length == 0) {
-    
+
     return <MainLayout navigationVisible={false} title='داشبورد'>
 
       <div className='flex relative h-[250px] flex-col space-y-2'>
@@ -98,25 +121,6 @@ export default function Home() {
             }} class="bg-white appearance-none border-2 border-gray-200 rounded w-full py-3 px-4 text-gray-700 leading-tight" id="inline-full-name" type="file" />
           </div>
 
-          <div className='flex items-center space-x-3'>
-            <label class="block w-1/3 text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-              پایه تحصیلی
-            </label>
-            <select name='level' onChange={formik.handleChange} class="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-              <option value="">پایه را انتخاب کنید</option>
-              <option value="1">پایه اول</option>
-              <option value="2">پایه دوم</option>
-              <option value="3">پایه سوم</option>
-              <option value="4">پایه چهارم</option>
-              <option value="5">پایه پنجم</option>
-              <option value="7">پایه هفتم</option>
-              <option value="8">پایه هشتم</option>
-              <option value="9">پایه نهم</option>
-              <option value="10">پایه دهم</option>
-              <option value="11">پایه یازدهم</option>
-              <option value="12">پایه دوازدهم</option>
-            </select>
-          </div>
 
           <div className='flex items-center space-x-3'>
             <label class="block w-1/3 text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
@@ -138,14 +142,24 @@ export default function Home() {
 
           <div className='flex items-center space-x-3'>
             <label class="block w-1/3 text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-              رشته را انتخاب کنید
+              پایه تحصیلی
             </label>
-            <select name='field' onChange={formik.handleChange} class="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-              <option value="">انتخاب رشته</option>
-              <option value="robotics">رباتیک</option>
-              <option value="art">هنر</option>
-              <option value="programming">برنامه نویسی</option>
-              <option value="management">مدیریت</option>
+            <select name='level' onChange={(e) => {
+              formik.setFieldValue("level", e.target.value)
+              setLevelId(e.target.value)
+            }} class="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+              <option value="">پایه را انتخاب کنید</option>
+              <option value="1">پایه اول</option>
+              <option value="2">پایه دوم</option>
+              <option value="3">پایه سوم</option>
+              <option value="4">پایه چهارم</option>
+              <option value="5">پایه پنجم</option>
+              <option value="7">پایه هفتم</option>
+              <option value="8">پایه هشتم</option>
+              <option value="9">پایه نهم</option>
+              <option value="10">پایه دهم</option>
+              <option value="11">پایه یازدهم</option>
+              <option value="12">پایه دوازدهم</option>
             </select>
           </div>
 
@@ -153,14 +167,20 @@ export default function Home() {
             <label class="block w-full py-5 text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
               کدام دوره ها را  قبلا گذرانده و مسلط هستید
             </label>
-            <select name='courses' multiple onChange={formik.handleChange} class="block appearance-none w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
-              {courses.data && courses.data.map((course, cc) => {
-                return <option key={cc} value={course.id}>{course.name}</option>
-              })}
-            </select>
+
+            <Select name='courses' onChange={(value) => {
+
+              let ids = []
+
+              value.map((item) => ids.push(item.value))
+
+              formik.setFieldValue("courses", ids)
+
+            }} isMulti options={courseOptions} />
+
           </div>
 
-          <Button  loading={freelancers.storeFreelancerLevelIsLoading}  title="ثبت و تایید" />
+          <Button loading={freelancers.storeFreelancerLevelIsLoading} title="ثبت و تایید" />
 
         </form>
 

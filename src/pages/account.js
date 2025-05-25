@@ -24,6 +24,7 @@ export default function Home() {
   const formik = useFormik({
     initialValues: {
       mobile: '',
+      referral: ''
     },
     onSubmit: values => {
       setMobile(values.mobile)
@@ -119,7 +120,13 @@ export default function Home() {
 
         <p className='text-right text-sm text-secondary'>ورود شما به معنای پذیرش <span className='text-primary-green font-semibold px-1'>قوانین</span> است.</p>
 
-        <Button  loading={users.isLoading} disabled={submitted} title="دریافت کد" />
+        <div className='flex mt-10 flex-col space-y-2'>
+          <span className='text-sm text-secondary'>شماره ای که شما را دعوت کرده را وارد کنید تا هر دو کوین بگیرید</span>
+          <input name='referral' onChange={formik.handleChange} className='rounded-xl border border-black w-full text-left p-3  placeholder-neutral-400' />
+        </div>
+
+
+        <Button loading={users.isLoading} disabled={submitted} title="دریافت کد" />
 
       </form>
       }
@@ -137,7 +144,8 @@ export default function Home() {
           <span id='reset' onClick={() => resetCode()} className='cursor-pointer hidden'>دریافت مجدد کد</span>
         </div>
 
-        <Button loading={users.verifyIsLoading}  disabled={submitted} title="ورود به حساب کاربری" />
+
+        <Button loading={users.verifyIsLoading} disabled={submitted} title="ورود به حساب کاربری" />
 
       </form>}
 

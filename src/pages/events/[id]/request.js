@@ -99,6 +99,7 @@ export default function Home() {
             <option value="2">پایه دوم</option>
             <option value="3">پایه سوم</option>
             <option value="4">پایه چهارم</option>
+            <option value="6">پایه ششم</option>
             <option value="5">پایه پنجم</option>
             <option value="7">پایه هفتم</option>
             <option value="8">پایه هشتم</option>
