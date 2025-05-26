@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
 import ContentBlock from '@/components/content-block';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -32,7 +32,9 @@ export default function Home() {
   return <MainLayout title="خانه">
     {sliders.data.length > 0 && <div className='p-5 pb-0'>
       <Swiper
-        slidesPerView={1.5}
+        slidesPerView={1.2}
+        initialSlide={2}
+        centeredSlides={true}
         loop
         autoplay={
           {
@@ -41,7 +43,7 @@ export default function Home() {
         }
         spaceBetween={15}
         pagination={true}
-        modules={[Pagination, Autoplay]}
+        modules={[EffectCoverflow, Pagination, Autoplay]}
       >
         {sliders.data.length && sliders.data.map((slider, sl) => {
           return <SwiperSlide key={sl}>
@@ -96,14 +98,14 @@ export default function Home() {
         </div>
         <div className='pr-5'>
           <Swiper
-            slidesPerView={2.5}
+            slidesPerView={3.5}
             spaceBetween={20}
           >
             {products.data.map((product, pr) => {
               return <SwiperSlide key={pr}>
                 <Link href={`/products/${product.id}`} className={`flex flex-col space-y-3 `} >
                   <img className="object-cover  rounded-xl" src={product.image_link} />
-                  <span className='line-clamp-1 text-right text-neutral-700 text-sm'>{product.name}</span>
+                  <span className='line-clamp-2 text-right text-neutral-700 text-sm'>{product.name}</span>
                   <span class="w-full text-primary-green">{product.price_formatter} تومان</span>
                 </Link>
               </SwiperSlide>
