@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 import ContentBlock from '@/components/content-block';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';

@@ -7,7 +7,6 @@ import Button from '@/components/button';
 import { useParams } from 'next/navigation';
 import { fetchFreelancer, fetchFreelancerRequest } from '@/pages/api';
 import { toast } from 'react-toastify';
-import { useRouter } from 'next/router';
 
 export default function Home() {
 
@@ -15,9 +14,6 @@ export default function Home() {
     const freelancers = useSelector((state) => state.freelancers);
     const [submitted, setSubmitted] = useState(false)
     const params = useParams()
-    const router = useRouter()
-
-    console.log(freelancers)
 
     const formik = useFormik({
         initialValues: {
