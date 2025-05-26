@@ -7,6 +7,7 @@ import { fetchCourses, fetchEvents, fetchFreelancers, fetchMovies, fetchProducts
 import { useSelector } from 'react-redux';
 import MainLayout from '@/components/main-layout';
 import Link from 'next/link';
+import BoxLoading from '@/components/box-loading';
 
 export default function Home() {
 
@@ -55,21 +56,25 @@ export default function Home() {
       </Swiper>
     </div>}
 
-    {movies.data.length > 0 && <ContentBlock type="movies" more="/movies" items={movies.data} title="فیلم پیشنهادی" />}
 
-    {events.data.length > 0 && <ContentBlock more="/events" items={events.data} title="رویدادها" />}
+    <ContentBlock type="movies" more="/movies" isLoading={movies.isLoading} items={movies.data} title="فیلم پیشنهادی" />
 
-    {courses.data.length > 0 && <ContentBlock more="/courses" items={courses.data} title="آموزش ببین" />}
+    <ContentBlock more="/events" items={events.data} isLoading={events.isLoading} title="رویدادها" />
+
+    <ContentBlock more="/courses" items={courses.data} isLoading={courses.isLoading} title="آموزش ببین" />
 
     {freelancers.data.length > 0 && <div >
-      <div>
+      <div className=" bg-white py-3">
         <div className='flex mb-5 px-5 items-center justify-between'>
           <h3 className='text-right text-base border-r-10 border-[#19C472] pr-2 font-bold '>فریلنسر شو</h3>
           <Link href="/freelancers" className='text-primary-green cursor-pointer font-semibold'>
             <img className='w-7' src="/images/back.png" />
           </Link>
         </div>
-        <div className='pr-5'>
+        <div className="mx-3 border border-neutral-200 rounded-2xl p-3">
+
+          {freelancers.isLoading && <BoxLoading />}
+
           <Swiper
             slidesPerView={3.5}
             spaceBetween={20}
@@ -89,14 +94,14 @@ export default function Home() {
 
 
     {products.data.length > 0 && <div className='pb-16'>
-      <div>
+      <div className=" bg-white py-3">
         <div className='flex mb-5 px-5 items-center justify-between '>
           <h3 className='text-right text-base border-r-10 border-[#19C472] pr-2 text-primary font-bold '>هرچی میخوای بخر</h3>
           <Link href="/categories" className='text-primary-green cursor-pointer font-semibold'>
             <img className='w-7' src="/images/back.png" />
           </Link>
         </div>
-        <div className='pr-5'>
+        <div className="mx-3 border border-neutral-300 rounded-xl p-3">
           <Swiper
             slidesPerView={3.5}
             spaceBetween={20}

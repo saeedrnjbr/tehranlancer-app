@@ -17,8 +17,9 @@ export default function Home() {
     dispatch(fetchCourseCategoryTrees(params))
   }, [params])
 
+  
 
-  return <MainLayout  backPath="/courses" background='bg-[#1AA662]' title="گروه‌بندی دوره‌ها">
+  return <MainLayout  backPath="/courses" background="bg-[#1AA662]" title="گروه‌بندی دوره‌ها">
 
     <div className='flex flex-col space-y-5  p-5'>
 

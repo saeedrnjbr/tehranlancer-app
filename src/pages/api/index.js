@@ -64,7 +64,7 @@ export const fetchFreelancer = createAsyncThunk("fetchFreelancer", async (data) 
 
 
 export const fetchCourses = createAsyncThunk("fetchCourses", async (data) => {
-  const res = await fetch(`${BASE_URL}/courses/${data ? data.id : 0}`);
+  const res = await fetch(`${BASE_URL}/courses/${data ? data.id : ''}`);
   return res?.json();
 });
 

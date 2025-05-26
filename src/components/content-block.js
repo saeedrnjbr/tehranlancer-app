@@ -1,8 +1,9 @@
 
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import BoxLoading from './box-loading';
 
-export default ({ title, items, perView = 3.5, size = "h-54", more = "/", type = "events" }) => {
+export default ({ title, items, perView = 3.5, size = "h-54", more = "/", type = "events" , isLoading = false }) => {
     return <div>
         <div>
             <div className='flex px-5 mb-5 items-center justify-between'>
@@ -11,7 +12,10 @@ export default ({ title, items, perView = 3.5, size = "h-54", more = "/", type =
                     <img className='w-7' src="/images/back.png" />
                 </Link>
             </div>
-            <div className='pr-5'>
+            <div className="mx-3 border border-slate-200 rounded-2xl  p-3">
+
+                {isLoading && <BoxLoading />}
+
                 {items && <Swiper
                     slidesPerView={3.5}
                     spaceBetween={20}

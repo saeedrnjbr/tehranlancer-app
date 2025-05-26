@@ -20,7 +20,7 @@ export default function Home() {
   }, [params])
 
 
-  return <MainLayout backPath="/freelancers" title={freelancers.freelancerData.length > 0 ? freelancers.freelancerData[0].nick_name : ""}>
+  return <MainLayout background='bg-white' backPath="/freelancers" title={freelancers.freelancerData.length > 0 ? freelancers.freelancerData[0].nick_name : ""}>
 
     <div className='grid grid-cols-12'>
 

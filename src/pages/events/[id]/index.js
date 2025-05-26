@@ -14,6 +14,49 @@ export default function Home() {
     dispatch(fetchEvents())
   }, [])
 
+
+  if (events.isLoading) {
+
+    return <MainLayout background="bg-[#1AA662]" backPath="/events" title="رویدادها">
+      <div className="flex flex-col p-5 h-screen">
+        <div className="grid grid-cols-1 space-y-5 ">
+          <div className="bg-white rounded-2xl flex items-center px-3 py-4 drop-shadow-sm">
+            <div className="h-20 w-20 bg-gray-200 rounded-md animate-pulse"></div>
+            <div className="flex flex-col space-y-2 ml-3">
+              <div className="bg-gray-200 h-4 w-48 rounded-md animate-pulse"></div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-gray-200 rounded-full animate-pulse"></div>
+                <div className="bg-gray-200 h-4 w-24 rounded-md animate-pulse"></div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white rounded-2xl flex items-center px-3 py-4 drop-shadow-sm">
+            <div className="h-20 w-20 bg-gray-200 rounded-md animate-pulse"></div>
+            <div className="flex flex-col space-y-2 ml-3">
+              <div className="bg-gray-200 h-4 w-48 rounded-md animate-pulse"></div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 bg-gray-200 rounded-full animate-pulse"></div>
+                <div className="bg-gray-200 h-4 w-24 rounded-md animate-pulse"></div>
+              </div>
+            </div>
+          </div>
+          <div className="bg-white rounded-2xl flex items-center px-3 py-4 drop-shadow-sm">
+            <div className="h-20 w-20 bg-gray-200 rounded-md animate-pulse"></div>
+            <div className="flex flex-col space-y-2 ml-3">
+              <div className="bg-gray-200 h-4 w-48 rounded-md animate-pulse"></div>
+              <div className="flex items-center gap-2">
+                <div className="w-4 h-4 bg-gray-200 rounded-full animate-pulse"></div>
+                <div className="bg-gray-200 h-4 w-24 rounded-md animate-pulse"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </MainLayout>
+
+
+  }
+
   return <MainLayout backPath="/events" title="رویدادها">
 
     <div className='flex flex-col p-5 bg-[#1AA662] h-screen'>

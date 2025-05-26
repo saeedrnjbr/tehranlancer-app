@@ -15,6 +15,31 @@ export default () => {
     dispatch(fetchFreelancers())
   }, [])
 
+  if (freelancers.isLoading) {
+    return <MainLayout background='bg-[#1AA662]' title="فریلنسرها">
+      <div className="grid grid-cols-2 gap-5 p-5">
+        <div className="bg-white border mb-1 border-gray-200 rounded-lg shadow-[0px_1px_6px_0px_rgba(0,_0,_0,_0.1)] px-2 py-3">
+          <div className="flex items-center space-x-2">
+            <div className="w-16 h-16 rounded-full bg-gray-200 animate-pulse"></div>
+            <div className="flex flex-col space-y-2">
+              <div className="bg-gray-200 animate-pulse rounded-md h-4 w-24"></div>
+              <div className="bg-gray-200 animate-pulse rounded-md h-3 w-16"></div>
+            </div>
+          </div>
+        </div>
+        <div className="bg-white border mb-1 border-gray-200 rounded-lg shadow-[0px_1px_6px_0px_rgba(0,_0,_0,_0.1)] px-2 py-3">
+          <div className="flex items-center space-x-2">
+            <div className="w-16 h-16 rounded-full bg-gray-200 animate-pulse"></div>
+            <div className="flex flex-col space-y-2">
+              <div className="bg-gray-200 animate-pulse rounded-md h-4 w-24"></div>
+              <div className="bg-gray-200 animate-pulse rounded-md h-3 w-16"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </MainLayout>
+  }
+
   return <MainLayout background='bg-[#1AA662]' title="فریلنسرها">
 
     <div className='grid grid-cols-2 gap-5  p-5 '>

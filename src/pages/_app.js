@@ -18,18 +18,7 @@ export default function App({ Component, pageProps }) {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
-  useEffect(() => {
-    const handleStart = () => {
-      NProgress.start()
-    }
-    const handleStop = () => {
-      NProgress.done()
-    }
-    handleStop()
-    return () => {
-      handleStart()
-    }
-  }, [pathname, searchParams])
+ 
 
   return <ReduxProvider>
     <ToastContainer
