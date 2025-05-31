@@ -24,7 +24,7 @@ export default ({ users }) => {
             <div className="flex items-center flex-col">
                 <img className="w-8" src="/images/point.png" />
                 <span className="text-base font-bold">تعداد کوپن</span>
-                <span>{users.currentData[0].coupons}</span>
+                {users.currentData.length > 0 && <span>{users.currentData[0].coupons}</span>}
             </div>
         </div>
     </div>
